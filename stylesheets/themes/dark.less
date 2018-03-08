@@ -1,7 +1,16 @@
+@background: rgb(40, 44, 52);
+
 @titlebar-color: #000;
 
+@alteration-intensity: 10%;
+
 @menu-button-color: white;
-@menu-button-hover-color: lighten(@menu-color, 10%);
-@menu-color: rgb(42,63,84);
+@menu-button-hover-color: lighten(@menu-color, @alteration-intensity);
+// @menu-color: rgb(42,63,84);
+@menu-color: rgb(33,37,43);
 @menu-item-font-color: white;
-@menu-item-hover-color: lighten(@menu-color, 10%);
+@menu-item-hover-color: lighten(@menu-color, @alteration-intensity);
+
+@card-text-color: white;
+@card-background: @menu-color;
+@sensor-card-hover-color: lighten(@menu-color, @alteration-intensity);
