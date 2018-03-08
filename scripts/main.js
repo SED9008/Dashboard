@@ -56,6 +56,7 @@ $(document).ready(function()
         },
         options: {
             maintainAspectRatio: false,
+            responsive: true,
             scales: {
                 yAxes: [{
                     ticks: {
