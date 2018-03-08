@@ -21,6 +21,7 @@ $(document).ready(function()
             });
         }
     });
+    // less.modifyVars({"@theme":"light"});
     // $("#menu-button").on("click", function(){
         // $("#navigation-menu").toggleClass("menu-hidden");
         // console.log("clicked");

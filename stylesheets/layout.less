@@ -1,15 +1,22 @@
 @theme: "dark";
+// @theme: "light";
 
 @import "themes/@{theme}.less";
 
 @menu-animation-speed: 200ms;
 @hover-animation-speed: 300ms;
+@click-animation-speed: 10ms;
 @title-bar-height: 70px;
 @menu-width: 300px;
 @menu-padding: 20px;
 @card-shadow:0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-
+// @card-shadow:0;
+@card-margin: 10px;
 @device-width: 1440px;
+
+@sensor-card-height: 150px;
+@sensor-card-width: 214px;
+@chart-card-height: 500px;
 
 
 body {
@@ -35,22 +42,38 @@ body {
     display: flex;
     flex: 1 100%;
     align-items: center;
-    background: black;
+    justify-content: space-between;
+    background: @header-background;
     height: @title-bar-height;
     padding-left:20px;
+    padding-right:20px;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 
     #menu-button {
-        user-select: none;
-        -moz-user-select: none;
-        -khtml-user-select: none;
-        -webkit-user-select: none;
-        -o-user-select: none;
+
 
         color: @menu-button-color;
         padding: 10px;
         cursor: pointer;
 
         &:hover { color: @menu-button-hover-color; }
+    }
+
+    #system-name {
+        display: flex;
+        align-items: center;
+        color: @menu-button-color;
+
+        img{
+            padding-left: 20px;
+            height: 30px;
+            width: 30px;
+        }
     }
 }
 
@@ -87,12 +110,22 @@ body {
         color: @menu-item-font-color;
         cursor: pointer;
         padding: 15px 20px;
+
+        -webkit-transition: all @hover-animation-speed ease-in-out;
+        -moz-transition: all @hover-animation-speed ease-in-out;
+        -o-transition: all @hover-animation-speed ease-in-out;
+        transition: all @hover-animation-speed ease-in-out;
+
         &:hover {
-            -webkit-transition: all @hover-animation-speed ease-in-out;
-            -moz-transition: all @hover-animation-speed ease-in-out;
-            -o-transition: all @hover-animation-speed ease-in-out;
-            transition: all @hover-animation-speed ease-in-out;
             background-color: @menu-item-hover-color;
+        }
+
+        &:active {
+            -webkit-transition: all @click-animation-speed ease-in-out;
+            -moz-transition: all @click-animation-speed ease-in-out;
+            -o-transition: all @click-animation-speed ease-in-out;
+            transition: all @click-animation-speed ease-in-out;
+            background-color: @menu-item-click-color;
         }
 
         .text {
@@ -113,36 +146,45 @@ body {
 
 .content {
     display: flex;
-    align-items: flex-start;
-    padding: 15px 20px 20px 20px;
-    overflow-x:hidden;
-    overflow-y:auto;
-    @media(min-width: 1px){
-
-    }
-    @media(min-width: @device-width){
-        flex: 1 auto;
-        // max-height: calc(100vh - @title-bar-height - @menu-padding - @menu-padding);
-    }
+    flex: 0 100%;
+    flex-direction: column;
+    // border: 2px solid red;
+    // flex-direction: column;
+    align-content: flex-start;
+    // padding: 15px 20px 20px 20px;
+    // overflow-x:hidden;
+    // overflow-y:auto;
+    //
+    // @media(min-width: @device-width){ flex: 1 100%; }
 
     .sensor-row {
         display: flex;
         flex-flow: row wrap;
-
-
-        @media(min-width: 1px){
-            // flex-direction: column;
-            flex-basis: 100%;
-        }
+        // border: 2px solid blue;
+        // padding-left:10px;
+        // padding-right: 10px;
+        @sensor-card-height
+        @media(min-width: 1px){ flex-basis: 100%; }
         @media(min-width: 1440px){
+            height: @sensor-card-height + @card-margin + @card-margin;
             justify-content: center;
+        }
+    }
 
-            // align-items: flex-start;
+    .chart-row{
+        display: flex;
+        flex-flow: row wrap;
+        border: 2px solid blue;
+        @sensor-card-height
+        @media(min-width: 1px){ flex-basis: 100%; }
+        @media(min-width: 1440px){
+            height: @chart-card-height + @card-margin + @card-margin;
+            justify-content: center;
         }
     }
 
     .card {
-        margin: 10px;
+        margin: @card-margin;
         border-radius: 5px;
         background: @card-background;
         color: @card-text-color;
@@ -151,31 +193,26 @@ body {
 
     .sensor-card {
         display: flex;
-
+        height: @sensor-card-height;
         cursor: pointer;
 
-
-        height: 150px;
-
-        @media(min-width: 1px){
-            // width: 90%;
-            flex-grow: 1;
-
-            flex-basis: 100%;
-
-        }
-        @media(min-width: @device-width){
-
-            min-width:200px;
-            max-width: 200px;
-        }
+        @media(min-width: 1px){ flex: 1 100%; }
+        @media(min-width: @device-width){ max-width: @sensor-card-width;}
 
         &:hover {
-            -webkit-transition: all @hover-animation-speed ease-in-out;
-            -moz-transition: all @hover-animation-speed ease-in-out;
-            -o-transition: all @hover-animation-speed ease-in-out;
-            transition: all @hover-animation-speed ease-in-out;
+            -webkit-transition: background @hover-animation-speed ease-in-out;
+            -moz-transition: background @hover-animation-speed ease-in-out;
+            -o-transition: background @hover-animation-speed ease-in-out;
+            transition: background @hover-animation-speed ease-in-out;
             background: @sensor-card-hover-color;
+        }
+
+        &:active {
+            -webkit-transition: background @click-animation-speed ease-in-out;
+            -moz-transition: background @click-animation-speed ease-in-out;
+            -o-transition: background @click-animation-speed ease-in-out;
+            transition: background @click-animation-speed ease-in-out;
+            background-color: @menu-item-click-color;
         }
     }
 }

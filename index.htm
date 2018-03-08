@@ -4,14 +4,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
-        <link  rel="stylesheet/less" type:"text/less" href="stylesheets/layout.less">
-        <link  rel="stylesheet" href="stylesheets/material-icons.css">
+        <link  rel="stylesheet/less" type:"text/less" href="stylesheets/layout.less"/>
+        <link  rel="stylesheet" href="stylesheets/material-icons.css"/>
 
         <script src="libs/jquery-3.2.1.min.js"></script>
         <script src="libs/jquery-ui.js"></script>
         <script>less = { env: 'development' };</script>
-        <script src="libs/less.min.js"></script>
-        <script>less.watch();</script>
+        <script src="libs/less.js"></script>
+        <!-- <script>less.watch();</script> -->
+
+
 
         <script src="scripts/main.js"></script>
     </head>
@@ -23,6 +25,12 @@
                 <div class="header">
                     <div id="menu-button">
                         <i class="material-icons md-36">menu</i>
+                    </div>
+
+                    <div id="system-name">
+
+                        <h2>System Name</h2>
+                        <!-- <img src="images/logo.png"></img> -->
                     </div>
                 </div>
             </div>
@@ -48,7 +56,11 @@
                         <div class="card sensor-card"></div>
                         <div class="card sensor-card"></div>
                         <div class="card sensor-card"></div>
-                        <!-- <div class="card sensor-card"></div> -->
+                    </div>
+
+                    <div class="chart-row">
+                        <div class="chart-settings"></div>
+                        <div id="chart" ></div>
                     </div>
                 </div>
             </div>
