@@ -9,8 +9,9 @@
 
         <script src="libs/jquery-3.2.1.min.js"></script>
         <script src="libs/jquery-ui.js"></script>
+        <script src="libs/Chart.min.js"></script>
         <script>less = { env: 'development' };</script>
-        <script src="libs/less.js"></script>
+        <script src="libs/less.min.js"></script>
         <!-- <script>less.watch();</script> -->
 
 
@@ -59,8 +60,11 @@
                     </div>
 
                     <div class="chart-row">
-                        <div class="chart-settings"></div>
-                        <div id="chart" ></div>
+                        <div class="card chart-card">
+                             <canvas id="chart" class="chart-canvas"></canvas>
+                        </div>
+                        <div class="card chart-settings-card"></div>
+
                     </div>
                 </div>
             </div>
